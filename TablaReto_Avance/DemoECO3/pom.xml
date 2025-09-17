@@ -9,7 +9,7 @@
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
     <groupId>pe.edu.upc</groupId>
-    <artifactId>DemoECO3SrpingBoot</artifactId>
+    <artifactId>DemoECO3SpringBoot</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <name>DemoECO3</name>
     <description>DemoECO3</description>
