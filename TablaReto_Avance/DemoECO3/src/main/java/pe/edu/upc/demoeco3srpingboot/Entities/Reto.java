@@ -1,4 +1,4 @@
-package pe.edu.upc.demoeco3srpingboot.Entities;
+package pe.edu.upc.demoeco3springboot.Entities;
 
 import jakarta.persistence.*;
 import java.time.LocalDate;
@@ -6,19 +6,20 @@ import java.time.LocalDate;
 @Entity
 @Table(name = "Reto")
 public class Reto {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-
     @Column(name = "id_reto")
     private Long idReto;
 
-    @Column(name = "id_tipo_reto", nullable = false)
-    private Long idTipoReto;;
+    @ManyToOne
+    @JoinColumn(name = "idTipoReto")
+    private TipoReto tipoReto;
 
-    @Column(name = "titulo", nullable = false, length = 150)
+    @Column(name = "titulo", length = 150, nullable = false)
     private String titulo;
 
-    @Column(name = "descripcion",nullable = false, length = 500)
+    @Column(name = "descripcion", length = 500)
     private String descripcion;
 
     @Column(name = "fecha_inicio", nullable = false)
@@ -29,9 +30,9 @@ public class Reto {
 
     public Reto() {}
 
-    public Reto(Long idReto, Long tipoReto, String titulo, String descripcion, LocalDate fechaInicio, LocalDate fechaFin) {
+    public Reto(Long idReto, TipoReto tipoReto, String titulo, String descripcion, LocalDate fechaInicio, LocalDate fechaFin) {
         this.idReto = idReto;
-        this.idTipoReto = tipoReto;
+        this.tipoReto = tipoReto;
         this.titulo = titulo;
         this.descripcion = descripcion;
         this.fechaInicio = fechaInicio;
@@ -46,12 +47,12 @@ public class Reto {
         this.idReto = idReto;
     }
 
-    public Long getIdTipoReto() {
-        return idTipoReto;
+    public TipoReto getTipoReto() {
+        return tipoReto;
     }
 
-    public void setIdTipoReto(Long idTipoReto) {
-        this.idTipoReto = idTipoReto;
+    public void setTipoReto(TipoReto tipoReto) {
+        this.tipoReto = tipoReto;
     }
 
     public String getTitulo() {
