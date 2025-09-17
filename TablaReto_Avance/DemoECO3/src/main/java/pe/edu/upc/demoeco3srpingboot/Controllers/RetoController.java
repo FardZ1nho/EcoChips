@@ -1,13 +1,13 @@
-package pe.edu.upc.demoeco3srpingboot.Controllers;
+package pe.edu.upc.demoeco3springboot.Controllers;
 
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import pe.edu.upc.demoeco3srpingboot.DTOs.RetoDTO;
-import pe.edu.upc.demoeco3srpingboot.Entities.Reto;
-import pe.edu.upc.demoeco3srpingboot.ServiceInterface.IRetoService;
+import pe.edu.upc.demoeco3springboot.DTOs.RetoDTO;
+import pe.edu.upc.demoeco3springboot.Entities.Reto;
+import pe.edu.upc.demoeco3springboot.ServiceInterface.IRetoService;
 
 import java.util.List;
 import java.util.stream.Collectors;
@@ -34,12 +34,12 @@ public class RetoController {
     }
 
     @DeleteMapping("/{id}")
-    public void eliminar(@PathVariable("id") Integer id){
+    public void eliminar(@PathVariable("id") Long id){
         rService.delete(id);
     }
 
     @GetMapping("/{id}")
-    public RetoDTO listarId(@PathVariable("id") Integer id){
+    public RetoDTO listarId(@PathVariable("id") Long id){
         ModelMapper m = new ModelMapper();
         return m.map(rService.listId(id), RetoDTO.class);
     }
