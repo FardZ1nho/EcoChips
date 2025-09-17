@@ -1,9 +1,11 @@
-package pe.edu.upc.demoeco3srpingboot.Repositories;
+package pe.edu.upc.demoeco3springboot.Repositories;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
-import pe.edu.upc.demoeco3srpingboot.Entities.Reto;
+import pe.edu.upc.demoeco3springboot.Entities.Reto;
+
+import java.util.List;
 
 @Repository
-public interface IRetoRepository extends JpaRepository<Reto, Integer>{
+public interface IRetoRepository extends JpaRepository<Reto, Long> {
 }
