@@ -1,4 +1,4 @@
-package pe.edu.upc.demoeco3srpingboot.DTOs;
+package pe.edu.upc.demoeco3springboot.DTOs;
 
 import java.time.LocalDate;
 
