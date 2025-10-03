@@ -1,10 +1,10 @@
-package pe.edu.upc.demoeco3springboot.ServiceImplements;
+package com.github.fardz1nho.ecochips.serviceimplements;
 
+import com.github.fardz1nho.ecochips.entities.Logro;
+import com.github.fardz1nho.ecochips.repositories.ILogroRepository;
+import com.github.fardz1nho.ecochips.servicesinterfaces.ILogroService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import pe.edu.upc.demoeco3springboot.Entities.Logro;
-import pe.edu.upc.demoeco3springboot.Repositories.ILogroRepository;
-import pe.edu.upc.demoeco3springboot.ServiceInterface.ILogroService;
 
 import java.util.List;
 
@@ -24,12 +24,17 @@ public class LogroServiceImplement implements ILogroService {
     }
 
     @Override
-    public void delete(int idLogro){
-        lRepo.deleteById(idLogro);
+    public void delete(int id){
+        lRepo.deleteById(id);
     }
 
     @Override
-    public Logro listId(int idLogro){
-        return lRepo.findById(idLogro).orElse(new Logro());
+    public Logro listId(int id){
+        return lRepo.findById(id).orElse(new Logro());
+    }
+
+    @Override
+    public void update(Logro logro) {
+        lRepo.save(logro);
     }
 }
