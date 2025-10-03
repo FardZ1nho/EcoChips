@@ -1,20 +1,21 @@
-package pe.edu.upc.demoeco3springboot.Entities;
+package com.github.fardz1nho.ecochips.entities;
 
 import jakarta.persistence.*;
+
+import java.time.LocalDate;
 
 @Entity
 @Table(name = "Logro")
 public class Logro {
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int idLogro;
 
-    @Column(name = "descripcion", nullable = false, length = 255)
+    @Column(name = "descripcion", length = 255, nullable = false)
     private String descripcion;
 
     @Column(name = "fechaObtencion", nullable = false)
-    private String fechaObtencion;
+    private LocalDate fechaObtencion;
 
     @ManyToOne
     @JoinColumn(name = "idUsuario", nullable = false)
@@ -25,6 +26,14 @@ public class Logro {
     private Reto reto;
 
     public Logro() {}
+
+    public Logro(int idLogro, String descripcion, LocalDate fechaObtencion, Usuario usuario, Reto reto) {
+        this.idLogro = idLogro;
+        this.descripcion = descripcion;
+        this.fechaObtencion = fechaObtencion;
+        this.usuario = usuario;
+        this.reto = reto;
+    }
 
     public int getIdLogro() {
         return idLogro;
@@ -42,11 +51,11 @@ public class Logro {
         this.descripcion = descripcion;
     }
 
-    public String getFechaObtencion() {
+    public LocalDate getFechaObtencion() {
         return fechaObtencion;
     }
 
-    public void setFechaObtencion(String fechaObtencion) {
+    public void setFechaObtencion(LocalDate fechaObtencion) {
         this.fechaObtencion = fechaObtencion;
     }
 
