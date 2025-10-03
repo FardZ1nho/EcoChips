@@ -1,12 +1,16 @@
-package pe.edu.upc.demoeco3springboot.ServiceInterface;
+package com.github.fardz1nho.ecochips.servicesinterfaces;
 
-import pe.edu.upc.demoeco3springboot.Entities.Reto;
 
+import com.github.fardz1nho.ecochips.entities.Reto;
+
+import java.time.LocalDate;
 import java.util.List;
 
 public interface IRetoService {
-    void insert(Reto reto);
-    List<Reto>list();
-    void delete(Long idReto);
-    Reto listId(Long idReto);
+    public void insert(Reto reto);
+    public List<Reto>list();
+    public void update(Reto reto);
+    public void delete(int id);
+    public Reto listId(int id);
+    public int countRetosByFechas(LocalDate fechaInicio, LocalDate fechaFin);
 }
