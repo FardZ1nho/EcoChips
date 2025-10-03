@@ -1,4 +1,4 @@
-package pe.edu.upc.demoeco3springboot.Entities;
+package com.github.fardz1nho.ecochips.entities;
 
 import jakarta.persistence.*;
 
@@ -9,7 +9,7 @@ import java.util.List;
 public class TipoReto {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long idTipoReto;
+    private int idTipoReto;
 
     @Column(name = "nombreTipoReto", length = 50, nullable = false)
     private String nombreTipoReto;
@@ -19,11 +19,17 @@ public class TipoReto {
 
     public TipoReto() {}
 
-    public Long getIdTipoReto() {
+    public TipoReto(int idTipoReto, String nombreTipoReto, List<Reto> retos) {
+        this.idTipoReto = idTipoReto;
+        this.nombreTipoReto = nombreTipoReto;
+        this.retos = retos;
+    }
+
+    public int getIdTipoReto() {
         return idTipoReto;
     }
 
-    public void setIdTipoReto(Long idTipoReto) {
+    public void setIdTipoReto(int idTipoReto) {
         this.idTipoReto = idTipoReto;
     }
 
