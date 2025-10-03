@@ -1,16 +1,16 @@
-package pe.edu.upc.demoeco3springboot.DTOs;
+package com.github.fardz1nho.ecochips.dtos;
 
 public class TipoRetoDTO {
-    private Long idTipoReto;
+    private int idTipoReto;
     private String nombreTipoReto;
 
     public TipoRetoDTO(){}
 
-    public Long getIdTipoReto() {
+    public int getIdTipoReto() {
         return idTipoReto;
     }
 
-    public void setIdTipoReto(Long idTipoReto) {
+    public void setIdTipoReto(int idTipoReto) {
         this.idTipoReto = idTipoReto;
     }
 
