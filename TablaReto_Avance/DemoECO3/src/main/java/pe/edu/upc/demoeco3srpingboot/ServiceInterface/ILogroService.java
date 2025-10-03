@@ -10,5 +10,5 @@ public interface ILogroService {
     public List<Logro> list();
     public void delete(int id);
     public Logro listId(int id);
-    void update(Logro logro);
+    public void update(Logro logro);
 }
