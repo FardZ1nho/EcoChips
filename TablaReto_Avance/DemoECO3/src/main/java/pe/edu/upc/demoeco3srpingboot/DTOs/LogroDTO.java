@@ -1,28 +1,46 @@
-package pe.edu.upc.demoeco3springboot.DTOs;
+package com.github.fardz1nho.ecochips.dtos;
+
+import java.time.LocalDate;
 
 public class LogroDTO {
-    private Long idLogro;
-    private String nombre;
+    private int idLogro;
+    private int idUsuario;
+    private int idReto;
     private String descripcion;
-    private Integer puntosOtorgados;
-    private Long idParticipacionReto;
+    private LocalDate fechaObtencion;
 
     public LogroDTO(){}
 
-    public Long getIdLogro() {
+    public LogroDTO(int idLogro, int idUsuario, int idReto, String descripcion, LocalDate fechaObtencion) {
+        this.idLogro = idLogro;
+        this.idUsuario = idUsuario;
+        this.idReto = idReto;
+        this.descripcion = descripcion;
+        this.fechaObtencion = fechaObtencion;
+    }
+
+    public int getIdLogro() {
         return idLogro;
     }
 
-    public void setIdLogro(Long idLogro) {
+    public void setIdLogro(int idLogro) {
         this.idLogro = idLogro;
     }
 
-    public String getNombre() {
-        return nombre;
+    public int getIdUsuario() {
+        return idUsuario;
     }
 
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
+    public void setIdUsuario(int idUsuario) {
+        this.idUsuario = idUsuario;
+    }
+
+    public int getIdReto() {
+        return idReto;
+    }
+
+    public void setIdReto(int idReto) {
+        this.idReto = idReto;
     }
 
     public String getDescripcion() {
@@ -33,19 +51,11 @@ public class LogroDTO {
         this.descripcion = descripcion;
     }
 
-    public Integer getPuntosOtorgados() {
-        return puntosOtorgados;
+    public LocalDate getFechaObtencion() {
+        return fechaObtencion;
     }
 
-    public void setPuntosOtorgados(Integer puntosOtorgados) {
-        this.puntosOtorgados = puntosOtorgados;
-    }
-
-    public Long getIdParticipacionReto() {
-        return idParticipacionReto;
-    }
-
-    public void setIdParticipacionReto(Long idParticipacionReto) {
-        this.idParticipacionReto = idParticipacionReto;
+    public void setFechaObtencion(LocalDate fechaObtencion) {
+        this.fechaObtencion = fechaObtencion;
     }
 }
