@@ -1,9 +1,7 @@
 package com.github.fardz1nho.ecochips.controllers;
 
 import com.github.fardz1nho.ecochips.dtos.LogroDTO;
-import com.github.fardz1nho.ecochips.dtos.ParticipacionRetoDTO;
 import com.github.fardz1nho.ecochips.entities.Logro;
-import com.github.fardz1nho.ecochips.entities.ParticipacionReto;
 import com.github.fardz1nho.ecochips.servicesinterfaces.ILogroService;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
