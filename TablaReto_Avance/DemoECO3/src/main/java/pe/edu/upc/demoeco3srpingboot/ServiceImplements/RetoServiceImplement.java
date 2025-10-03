@@ -1,11 +1,12 @@
-package pe.edu.upc.demoeco3springboot.ServiceImplements;
+package com.github.fardz1nho.ecochips.serviceimplements;
 
+import com.github.fardz1nho.ecochips.entities.Reto;
+import com.github.fardz1nho.ecochips.repositories.IRetoRepository;
+import com.github.fardz1nho.ecochips.servicesinterfaces.IRetoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import pe.edu.upc.demoeco3springboot.Entities.Reto;
-import pe.edu.upc.demoeco3springboot.Repositories.IRetoRepository;
-import pe.edu.upc.demoeco3springboot.ServiceInterface.IRetoService;
 
+import java.time.LocalDate;
 import java.util.List;
 @Service
 public class RetoServiceImplement implements IRetoService {
@@ -23,12 +24,22 @@ public class RetoServiceImplement implements IRetoService {
     }
 
     @Override
-    public void delete(Long idReto){
-        rRepo.deleteById(idReto);
+    public void update(Reto reto) {
+        rRepo.save(reto);
     }
 
     @Override
-    public Reto listId(Long idReto){
-        return rRepo.findById(idReto).orElse(new Reto());
+    public void delete(int id){
+        rRepo.deleteById(id);
+    }
+
+    @Override
+    public Reto listId(int id){
+        return rRepo.findById(id).orElse(new Reto());
+    }
+
+    @Override
+    public int countRetosByFechas(LocalDate fechaInicio, LocalDate fechaFin) {
+        return rRepo.countRetosByFechas(fechaInicio, fechaFin);
     }
 }
