@@ -1,12 +1,14 @@
-package pe.edu.upc.demoeco3springboot.ServiceInterface;
+package com.github.fardz1nho.ecochips.servicesinterfaces;
 
-import pe.edu.upc.demoeco3springboot.Entities.Logro;
+
+import com.github.fardz1nho.ecochips.entities.ParticipacionReto;
 
 import java.util.List;
 
-public interface ILogroService {
-    public void insert(Logro logro);
-    public List<Logro> list();
-    public void delete(int idLogro);
-    public Logro listId(int idLogro);
+public interface IParticipacionRetoService {
+    public List<ParticipacionReto> list();
+    public void insert(ParticipacionReto participacionReto);
+    public void update(ParticipacionReto participacionReto);
+    public ParticipacionReto listId(int id);
+    public void delete(int id);
 }
