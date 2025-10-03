@@ -1,7 +1,11 @@
-package pe.edu.upc.demoeco3springboot.Entities;
+package com.github.fardz1nho.ecochips.entities;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
+
 import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Table(name = "Reto")
@@ -10,7 +14,7 @@ public class Reto {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id_reto")
-    private Long idReto;
+    private int idReto;
 
     @ManyToOne
     @JoinColumn(name = "idTipoReto")
@@ -30,7 +34,7 @@ public class Reto {
 
     public Reto() {}
 
-    public Reto(Long idReto, TipoReto tipoReto, String titulo, String descripcion, LocalDate fechaInicio, LocalDate fechaFin) {
+    public Reto(int idReto, TipoReto tipoReto, String titulo, String descripcion, LocalDate fechaInicio, LocalDate fechaFin) {
         this.idReto = idReto;
         this.tipoReto = tipoReto;
         this.titulo = titulo;
@@ -39,11 +43,11 @@ public class Reto {
         this.fechaFin = fechaFin;
     }
 
-    public Long getIdReto() {
+    public int getIdReto() {
         return idReto;
     }
 
-    public void setIdReto(Long idReto) {
+    public void setIdReto(int idReto) {
         this.idReto = idReto;
     }
 
