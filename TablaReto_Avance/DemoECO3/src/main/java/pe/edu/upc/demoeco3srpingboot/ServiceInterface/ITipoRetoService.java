@@ -1,12 +1,15 @@
-package pe.edu.upc.demoeco3springboot.ServiceInterface;
+package com.github.fardz1nho.ecochips.servicesinterfaces;
 
-import pe.edu.upc.demoeco3springboot.Entities.TipoReto;
+
+import com.github.fardz1nho.ecochips.entities.TipoReto;
 
 import java.util.List;
 
 public interface ITipoRetoService {
-    void insert(TipoReto tipoReto);
-    List<TipoReto> list();
-    void delete(Long idTipoReto);
-    TipoReto listId(Long idTipoReto);
+    public void insert(TipoReto tipoReto);
+    public List<TipoReto> list();
+    public void update(TipoReto tipoReto);
+    public void delete(int id);
+    public TipoReto listId(int id);
+    public List<String[]> TiposXretos();
 }
