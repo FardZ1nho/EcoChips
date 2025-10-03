@@ -1,10 +1,10 @@
-package pe.edu.upc.demoeco3springboot.DTOs;
+package com.github.fardz1nho.ecochips.dtos;
 
 import java.time.LocalDate;
 
 public class RetoDTO {
-    private Long idReto;
-    private Long idTipoReto;
+    private int idReto;
+    private int idTipoReto;
     private String titulo;
     private String descripcion;
     private LocalDate fechaInicio;
@@ -12,7 +12,7 @@ public class RetoDTO {
 
     public RetoDTO() {}
 
-    public RetoDTO(Long idReto, Long idTipoReto, String titulo, String descripcion, LocalDate fechaInicio, LocalDate fechaFin) {
+    public RetoDTO(int idReto, int idTipoReto, String titulo, String descripcion, LocalDate fechaInicio, LocalDate fechaFin) {
         this.idReto = idReto;
         this.idTipoReto = idTipoReto;
         this.titulo = titulo;
@@ -21,19 +21,19 @@ public class RetoDTO {
         this.fechaFin = fechaFin;
     }
 
-    public Long getIdReto() {
+    public int getIdReto() {
         return idReto;
     }
 
-    public void setIdReto(Long idReto) {
+    public void setIdReto(int idReto) {
         this.idReto = idReto;
     }
 
-    public Long getIdTipoReto() {
+    public int getIdTipoReto() {
         return idTipoReto;
     }
 
-    public void setIdTipoReto(Long idTipoReto) {
+    public void setIdTipoReto(int idTipoReto) {
         this.idTipoReto = idTipoReto;
     }
 
