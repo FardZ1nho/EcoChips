@@ -1,10 +1,11 @@
-package pe.edu.upc.demoeco3springboot.ServiceImplements;
+package com.github.fardz1nho.ecochips.serviceimplements;
 
+import com.github.fardz1nho.ecochips.entities.TipoReto;
+import com.github.fardz1nho.ecochips.repositories.ITipoRetoRepository;
+import com.github.fardz1nho.ecochips.servicesinterfaces.ITipoRetoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import pe.edu.upc.demoeco3springboot.Entities.TipoReto;
-import pe.edu.upc.demoeco3springboot.Repositories.ITipoRetoRepository;
-import pe.edu.upc.demoeco3springboot.ServiceInterface.ITipoRetoService;
+
 
 import java.util.List;
 
@@ -24,12 +25,22 @@ public class TipoRetoServiceImplement implements ITipoRetoService {
     }
 
     @Override
-    public void delete(Long idTipoReto){
-        tRepo.deleteById(idTipoReto);
+    public void update(TipoReto tipoReto) {
+        tRepo.save(tipoReto);
     }
 
     @Override
-    public TipoReto listId(Long idTipoReto){
-        return tRepo.findById(idTipoReto).orElse(new TipoReto());
+    public void delete(int id){
+        tRepo.deleteById(id);
+    }
+
+    @Override
+    public TipoReto listId(int id){
+        return tRepo.findById(id).orElse(new TipoReto());
+    }
+
+    @Override
+    public List<String[]> TiposXretos(){
+        return tRepo.TiposXretos();
     }
 }
