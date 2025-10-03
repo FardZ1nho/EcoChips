@@ -1,6 +1,7 @@
-package pe.edu.upc.demoeco3springboot.Entities;
+package com.github.fardz1nho.ecochips.entities;
 
 import jakarta.persistence.*;
+
 import java.time.LocalDate;
 
 @Entity
@@ -18,10 +19,13 @@ public class ParticipacionReto {
     @JoinColumn(name = "idReto", nullable = false)
     private Reto reto;
 
+    @Column(name = "fechaRegistro", nullable = false)
     private LocalDate fechaRegistro;
 
+    @Column(name = "Estado", length = 30, nullable = false)
     private String estado;
 
+    @Column(name = "puntosObtenidos", length = 10, nullable = false)
     private int puntosObtenidos;
 
     public int getIdParticipacion() {
