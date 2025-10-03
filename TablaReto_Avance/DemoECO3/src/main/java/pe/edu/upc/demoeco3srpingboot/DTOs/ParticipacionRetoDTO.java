@@ -1,13 +1,14 @@
-package pe.edu.upc.demoeco3springboot.DTOs;
+package com.github.fardz1nho.ecochips.dtos;
 
-import pe.edu.upc.demoeco3springboot.Entities.Reto;
+import com.github.fardz1nho.ecochips.entities.Reto;
+import com.github.fardz1nho.ecochips.entities.Usuario;
 
 import java.time.LocalDate;
 
 public class ParticipacionRetoDTO {
     private int idParticipacion;
-    private Usuario usuario;
-    private Reto reto;
+    private int idReto;
+    private int idUsuario;
     private LocalDate fechaRegistro;
     private String estado;
     private int puntosObtenidos;
@@ -20,20 +21,20 @@ public class ParticipacionRetoDTO {
         this.idParticipacion = idParticipacion;
     }
 
-    public Usuario getUsuario() {
-        return usuario;
+    public int getIdReto() {
+        return idReto;
     }
 
-    public void setUsuario(Usuario usuario) {
-        this.usuario = usuario;
+    public void setIdReto(int idReto) {
+        this.idReto = idReto;
     }
 
-    public Reto getReto() {
-        return reto;
+    public int getIdUsuario() {
+        return idUsuario;
     }
 
-    public void setReto(Reto reto) {
-        this.reto = reto;
+    public void setIdUsuario(int idUsuario) {
+        this.idUsuario = idUsuario;
     }
 
     public LocalDate getFechaRegistro() {
