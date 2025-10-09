@@ -20,11 +20,11 @@ public interface IUserRepository extends JpaRepository<Usuario, Integer> {
     @Query("SELECT u FROM Usuario u WHERE u.nivel = :nivel")
     List<Usuario> findByNivel(int nivel);
 
-    @Query(value = "SELECT u.nombre, COUNT(l.idLogro) " +
-            "FROM Usuario u " +
-            "INNER JOIN Logro l ON u.idUsuario = l.idUsuario " +
-            "GROUP BY u.idUsuario, u.nombre " +
-            "ORDER BY COUNT(l.idLogro) DESC",
+    @Query(value = "SELECT u.nombre, COUNT(l.id_logro) " +
+            "FROM usuario u " +
+            "INNER JOIN logro l ON u.id_usuario = l.id_usuario " +
+            "GROUP BY u.id_usuario, u.nombre " +
+            "ORDER BY COUNT(l.id_logro) DESC",
             nativeQuery = true)
     public List<Object[]> obtenerUsuariosConConteoLogros();
 
