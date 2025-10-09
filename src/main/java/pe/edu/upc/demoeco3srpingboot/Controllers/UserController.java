@@ -147,19 +147,4 @@ public class UserController {
 
         return ResponseEntity.ok(ranking);
     }
-
-    @GetMapping("/puntaje-ranking")
-    @PreAuthorize("hasAnyAuthority('CLIENT','ADMIN','SOPORTE')")
-    public ResponseEntity<List<UsuarioPuntajeDTO>> obtenerUsuariosConMayorPuntaje() {
-        List<Object[]> resultados = uS.obtenerUsuariosConMayorPuntaje();
-
-        List<UsuarioPuntajeDTO> ranking = resultados.stream()
-                .map(row -> new UsuarioPuntajeDTO(
-                        (String) row[0],
-                        ((Number) row[1]).longValue()
-                ))
-                .collect(Collectors.toList());
-
-        return ResponseEntity.ok(ranking);
-    }
 }

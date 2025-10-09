@@ -19,7 +19,5 @@ public interface IUserService {
 
     public List<Object[]> obtenerUsuariosConConteoLogros();
 
-    public List<Object[]> obtenerUsuariosConMayorPuntaje();
-
     public List<Usuario> findByNivel(int nivel);
 }

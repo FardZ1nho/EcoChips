@@ -28,11 +28,4 @@ public interface IUserRepository extends JpaRepository<Usuario, Integer> {
             nativeQuery = true)
     public List<Object[]> obtenerUsuariosConConteoLogros();
 
-    @Query(value = "SELECT u.nombre, SUM(p.puntosObte) " +
-            "FROM Usuario u " +
-            "INNER JOIN ParticipacionReto p ON u.idUsuario = p.idUsuario " +
-            "GROUP BY u.idUsuario, u.nombre " +
-            "ORDER BY SUM(p.puntosObte) DESC",
-            nativeQuery = true)
-    public List<Object[]> obtenerUsuariosConMayorPuntaje();
 }

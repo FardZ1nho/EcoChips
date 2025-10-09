@@ -38,12 +38,6 @@ public class UserServiceImplement implements IUserService {
     }
 
     @Override
-    public List<Object[]> obtenerUsuariosConMayorPuntaje() {
-        return uS.obtenerUsuariosConMayorPuntaje();
-    }
-
-
-    @Override
     public List<Usuario> findByNivel(int nivel) {
         return uS.findByNivel(nivel);}
 }
