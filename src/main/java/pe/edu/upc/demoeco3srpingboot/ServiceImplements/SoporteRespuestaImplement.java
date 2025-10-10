@@ -4,7 +4,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import pe.edu.upc.demoeco3srpingboot.DTOs.SoporteRespuestaListDTO;
 import pe.edu.upc.demoeco3srpingboot.Entities.SoporteRespuesta;
-import pe.edu.upc.demoeco3srpingboot.Entities.Usuario;
 import pe.edu.upc.demoeco3srpingboot.Repositories.ISoporteRespuestaRepository;
 import pe.edu.upc.demoeco3srpingboot.ServiceInterface.ISoporteRespuestaService;
 
@@ -39,7 +38,6 @@ public class SoporteRespuestaImplement implements ISoporteRespuestaService {
     @Override
     public void update(SoporteRespuesta SoporteRespuesta) {
         repository.save(SoporteRespuesta);
-
     }
 
     @Override
@@ -56,16 +54,27 @@ public class SoporteRespuestaImplement implements ISoporteRespuestaService {
             dto.setRespuesta(resp.getRespuesta());
             dto.setFecha(resp.getFecha());
 
-            dto.setTituloSolicitud(resp.getSolicitud().getTitulo());
-            dto.setDescripcionSolicitud(resp.getSolicitud().getDescripcion());
-            dto.setEstadoSolicitud(resp.getSolicitud().getEstado());
+            if (resp.getSolicitud() != null) {
+                dto.setTituloSolicitud(resp.getSolicitud().getTitulo());
+                dto.setDescripcionSolicitud(resp.getSolicitud().getDescripcion());
+                dto.setEstadoSolicitud(resp.getSolicitud().getEstado());
 
-            dto.setNombreUsuario(resp.getSolicitud().getUsuario().getNombre());
-            dto.setCorreoUsuario(resp.getSolicitud().getUsuario().getCorreo());
+                if (resp.getSolicitud().getUsuario() != null) {
+                    dto.setNombreUsuario(resp.getSolicitud().getUsuario().getNombre());
+                    dto.setCorreoUsuario(resp.getSolicitud().getUsuario().getCorreo());
+                } else {
+                    dto.setNombreUsuario("Desconocido");
+                    dto.setCorreoUsuario("No disponible");
+                }
+            } else {
+                dto.setTituloSolicitud("Sin solicitud asociada");
+                dto.setDescripcionSolicitud("N/A");
+                dto.setEstadoSolicitud("N/A");
+                dto.setNombreUsuario("Desconocido");
+                dto.setCorreoUsuario("No disponible");
+            }
 
             return dto;
         }).collect(Collectors.toList());
     }
-
-
 }
