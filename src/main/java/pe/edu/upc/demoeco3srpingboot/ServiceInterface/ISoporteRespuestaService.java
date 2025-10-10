@@ -1,5 +1,6 @@
 package pe.edu.upc.demoeco3srpingboot.ServiceInterface;
 
+import pe.edu.upc.demoeco3srpingboot.DTOs.SoporteRespuestaListDTO;
 import pe.edu.upc.demoeco3srpingboot.Entities.SoporteRespuesta;
 import pe.edu.upc.demoeco3srpingboot.Entities.Usuario;
 
@@ -12,6 +13,8 @@ public interface ISoporteRespuestaService {
     public void delete(int id);
     public void update(SoporteRespuesta SoporteRespuesta);
     public void insert(SoporteRespuesta SoporteRespuesta);
+    List<SoporteRespuestaListDTO> listarRespuestasReducidas();
+
 
 
 

@@ -2,12 +2,14 @@ package pe.edu.upc.demoeco3srpingboot.ServiceImplements;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import pe.edu.upc.demoeco3srpingboot.DTOs.SoporteRespuestaListDTO;
 import pe.edu.upc.demoeco3srpingboot.Entities.SoporteRespuesta;
 import pe.edu.upc.demoeco3srpingboot.Entities.Usuario;
 import pe.edu.upc.demoeco3srpingboot.Repositories.ISoporteRespuestaRepository;
 import pe.edu.upc.demoeco3srpingboot.ServiceInterface.ISoporteRespuestaService;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 public class SoporteRespuestaImplement implements ISoporteRespuestaService {
@@ -43,6 +45,26 @@ public class SoporteRespuestaImplement implements ISoporteRespuestaService {
     @Override
     public void insert(SoporteRespuesta SoporteRespuesta) {
         repository.save(SoporteRespuesta);
+    }
+
+    @Override
+    public List<SoporteRespuestaListDTO> listarRespuestasReducidas() {
+        return repository.findAll().stream().map(resp -> {
+            SoporteRespuestaListDTO dto = new SoporteRespuestaListDTO();
+
+            dto.setIdRespuesta(resp.getIdRespuesta());
+            dto.setRespuesta(resp.getRespuesta());
+            dto.setFecha(resp.getFecha());
+
+            dto.setTituloSolicitud(resp.getSolicitud().getTitulo());
+            dto.setDescripcionSolicitud(resp.getSolicitud().getDescripcion());
+            dto.setEstadoSolicitud(resp.getSolicitud().getEstado());
+
+            dto.setNombreUsuario(resp.getSolicitud().getUsuario().getNombre());
+            dto.setCorreoUsuario(resp.getSolicitud().getUsuario().getCorreo());
+
+            return dto;
+        }).collect(Collectors.toList());
     }
 
 

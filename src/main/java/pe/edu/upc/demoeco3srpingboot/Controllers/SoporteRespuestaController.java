@@ -8,6 +8,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 import pe.edu.upc.demoeco3srpingboot.DTOs.SoporteRespuestaDTO;
+import pe.edu.upc.demoeco3srpingboot.DTOs.SoporteRespuestaListDTO;
 import pe.edu.upc.demoeco3srpingboot.Entities.SoporteRespuesta;
 import pe.edu.upc.demoeco3srpingboot.ServiceInterface.ISoporteRespuestaService;
 
@@ -23,11 +24,8 @@ public class SoporteRespuestaController {
 
     @GetMapping
     @PreAuthorize("hasAnyAuthority('ADMIN','SOPORTE')")
-    public List<SoporteRespuestaDTO> listar() {
-        return rS.listarRespuestas().stream().map(resp -> {
-            ModelMapper m = new ModelMapper();
-            return m.map(resp, SoporteRespuestaDTO.class);
-        }).collect(Collectors.toList());
+    public List<SoporteRespuestaListDTO> listar() {
+        return rS.listarRespuestasReducidas();
     }
 
     @PostMapping
