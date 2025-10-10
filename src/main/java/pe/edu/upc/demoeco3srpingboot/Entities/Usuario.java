@@ -37,6 +37,7 @@ public class Usuario implements Serializable {
 
     @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     @JoinColumn(name = "idUsuario")
+    @com.fasterxml.jackson.annotation.JsonIgnore
     private List<Rol> roles;
 
     public Usuario(){}

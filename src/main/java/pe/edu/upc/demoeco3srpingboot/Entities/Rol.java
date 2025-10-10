@@ -16,6 +16,7 @@ public class Rol implements Serializable {
 
     @ManyToOne
     @JoinColumn(name = "idUsuario", nullable = false)
+    @com.fasterxml.jackson.annotation.JsonIgnore
     private Usuario usuario;
 
     public Rol(){}

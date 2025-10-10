@@ -6,7 +6,6 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
-import pe.edu.upc.demoeco3srpingboot.DTOs.UsuarioRecomendacionCreateDTO;
 import pe.edu.upc.demoeco3srpingboot.DTOs.UsuarioRecomendacionDTO;
 import pe.edu.upc.demoeco3srpingboot.Entities.Recomendacion;
 import pe.edu.upc.demoeco3srpingboot.Entities.Usuario;
@@ -25,31 +24,23 @@ public class UsuarioRecomendacionController {
 
     @PostMapping
     @PreAuthorize("hasAnyAuthority('ADMIN','SOPORTE')")
-    public void insert(@RequestBody UsuarioRecomendacionCreateDTO dto) {
-        UsuarioRecomendacion ur = new UsuarioRecomendacion();
-
-        Usuario usuario = new Usuario();
-        usuario.setIdUsuario(dto.getIdUsuario());
-
-        Recomendacion recomendacion = new Recomendacion();
-        recomendacion.setIdRecomendacion(dto.getIdRecomendacion());
-
-        ur.setUsuario(usuario);
-        ur.setRecomendacion(recomendacion);
-        ur.setFechaAsignacion(dto.getFechaAsignacion());
-
-        urS.insert(ur);
+    public void insert(@RequestBody UsuarioRecomendacionDTO dto) {
+        ModelMapper m = new ModelMapper();
+        UsuarioRecomendacion uh =m.map(dto,UsuarioRecomendacion.class);
+        urS.insert(uh);
     }
-
     @GetMapping
     @PreAuthorize("hasAnyAuthority('ADMIN','SOPORTE')")
     public List<UsuarioRecomendacionDTO> list(){
-        return urS.list().stream().map(y->{
-            ModelMapper m = new ModelMapper();
-            return m.map(y,UsuarioRecomendacionDTO.class);
+        return urS.list().stream().map(x -> {
+            UsuarioRecomendacionDTO dto = new UsuarioRecomendacionDTO();
+            dto.setIdUsuarioRecomendacion(x.getIdUsuarioRecomendacion());
+            dto.setIdUsuario(x.getUsuario().getIdUsuario());
+            dto.setIdRecomendacion(x.getRecomendacion().getIdRecomendacion());
+            dto.setFechaAsignacion(x.getFechaAsignacion());
+            return dto;
         }).collect(Collectors.toList());
     }
-
 
     @GetMapping("/{idUsuario}")
     @PreAuthorize("hasAnyAuthority('CLIENT','ADMIN','SOPORTE')")
