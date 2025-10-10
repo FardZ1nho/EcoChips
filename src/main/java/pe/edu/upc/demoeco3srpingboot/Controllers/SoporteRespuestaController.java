@@ -23,6 +23,7 @@ public class SoporteRespuestaController {
     private ISoporteRespuestaService rS;
 
     @GetMapping
+    @PreAuthorize("hasAnyAuthority('ADMIN','SOPORTE')")
     public ResponseEntity<List<SoporteRespuestaListDTO>> listar() {
         List<SoporteRespuestaListDTO> lista = rS.listarRespuestasReducidas();
         return ResponseEntity.ok(lista);
