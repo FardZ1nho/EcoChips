@@ -24,8 +24,12 @@ public class SoporteRespuestaController {
 
     @GetMapping
     @PreAuthorize("hasAnyAuthority('ADMIN','SOPORTE')")
-    public List<SoporteRespuestaListDTO> listar() {
-        return rS.listarRespuestasReducidas();
+    public ResponseEntity<?> listar() {
+        List<SoporteRespuestaListDTO> lista = rS.listarRespuestasReducidas();
+        if (lista.isEmpty()) {
+            return ResponseEntity.status(HttpStatus.NO_CONTENT).build();
+        }
+        return ResponseEntity.ok(lista);
     }
 
     @PostMapping
