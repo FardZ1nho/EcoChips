@@ -51,7 +51,6 @@ public class Recomendacion {
     public void setTipo(String tipo) {
         this.tipo = tipo;
     }
-    // Constructor
     public Recomendacion() {
     }
 

@@ -40,4 +40,9 @@ public class UserServiceImplement implements IUserService {
     @Override
     public List<Usuario> findByNivel(int nivel) {
         return uS.findByNivel(nivel);}
+
+    @Override
+    public List<Object[]> obtenerDistribucionParticipantesPorGenero() {
+        return uS.obtenerDistribucionParticipantesPorGenero();
+    }
 }

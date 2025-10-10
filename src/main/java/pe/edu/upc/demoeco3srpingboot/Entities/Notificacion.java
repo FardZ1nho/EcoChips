@@ -46,7 +46,6 @@ public class Notificacion {
     private LocalDateTime fechaCrea;
 
 
-    // Constructor
     public Notificacion() {}
 
     public int getIdNotificacion() {

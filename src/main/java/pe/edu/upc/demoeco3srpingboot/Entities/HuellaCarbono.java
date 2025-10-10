@@ -41,7 +41,6 @@ public class HuellaCarbono {
         this.actividades = actividades;
     }
 
-    // Getters y Setters
     public int getIdHuella() { return idHuella; }
     public void setIdHuella(int idHuella) { this.idHuella = idHuella; }
 

@@ -28,4 +28,13 @@ public interface IUserRepository extends JpaRepository<Usuario, Integer> {
             nativeQuery = true)
     public List<Object[]> obtenerUsuariosConConteoLogros();
 
+    @Query(value = "SELECT u.genero, COUNT(DISTINCT u.id_usuario) AS cantidad_participantes, CAST(AVG(u.edad) AS DECIMAL(10, 2)) AS edad_promedio " +
+            "FROM usuario u " +
+            "INNER JOIN usuario_evento ue ON u.id_usuario = ue.id_usuario " +
+            "GROUP BY u.genero " +
+            "ORDER BY cantidad_participantes DESC",
+            nativeQuery = true)
+    public List<Object[]> obtenerDistribucionParticipantesPorGenero();
+
+
 }

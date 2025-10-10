@@ -31,7 +31,6 @@ public class HuellaCarbonoController {
 
     private final ModelMapper modelMapper = new ModelMapper();
 
-    // Listar todo
     @GetMapping
     @PreAuthorize("hasAnyAuthority('ADMIN','SOPORTE')")
     public List<HuellaCarbonoDTO> list() {
@@ -44,7 +43,6 @@ public class HuellaCarbonoController {
                 .collect(Collectors.toList());
     }
 
-    // Listar por ID
     @GetMapping("/{id}")
     @PreAuthorize("hasAnyAuthority('CLIENT','ADMIN','SOPORTE')")
     public HuellaCarbonoDTO listarId(@PathVariable("id") Integer id) {
@@ -56,7 +54,6 @@ public class HuellaCarbonoController {
         return dto;
     }
 
-    // Ins
     @PostMapping
     @PreAuthorize("hasAnyAuthority('CLIENT','ADMIN','SOPORTE')")
     public String insertar(@RequestBody HuellaCarbonoDTO dto) {
@@ -78,7 +75,7 @@ public class HuellaCarbonoController {
         return "Huella registrada correctamente";
     }
 
-    // Mod
+
     @PutMapping
     @PreAuthorize("hasAnyAuthority(ADMIN','SOPORTE')")
     public String modificar(@RequestBody HuellaCarbonoDTO dto) {
@@ -99,7 +96,6 @@ public class HuellaCarbonoController {
         return "Registro con ID " + dto.getIdHuella() + " modificado correctamente.";
     }
 
-    // Del
     @DeleteMapping("/{id}")
     @PreAuthorize("hasAnyAuthority('ADMIN','SOPORTE')")
     public String eliminar(@PathVariable("id") Integer id) {
@@ -110,7 +106,6 @@ public class HuellaCarbonoController {
         return "Registro con ID " + id + " eliminado correctamente.";
     }
 
-    // Promedio global de CO2 entre fechas
     @GetMapping("/admin/promedioCO2")
     @PreAuthorize("hasAnyAuthority('ADMIN','SOPORTE')")
     public Double promedioCO2Global(@RequestParam("inicio") String inicioStr,
@@ -120,7 +115,6 @@ public class HuellaCarbonoController {
 
         return huellaCarbonoService.calcularPromedioCO2TodosUsuarios(inicio, fin);
     }
-    // Promedio CO2 entre fechas x usuario
     @GetMapping("/usuario/promedioCO2")
     @PreAuthorize("hasAnyAuthority('CLIENT','ADMIN','SOPORTE')")
     public Double promedioCO2Usuario(

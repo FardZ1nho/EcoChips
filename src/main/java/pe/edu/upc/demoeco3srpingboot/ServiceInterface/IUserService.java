@@ -20,4 +20,6 @@ public interface IUserService {
     public List<Object[]> obtenerUsuariosConConteoLogros();
 
     public List<Usuario> findByNivel(int nivel);
+    public List<Object[]> obtenerDistribucionParticipantesPorGenero();
+
 }

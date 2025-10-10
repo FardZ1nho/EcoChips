@@ -86,7 +86,6 @@ public class UserController {
                     .body("No se puede modificar. No existe un registro con el ID" + u.getIdUsuario());
         }
 
-        //Actualizar si pasa validaciones
         uS.update(u);
         return  ResponseEntity.ok("Registro con Id" +u.getIdUsuario()+"modificado correctamente");
     }
@@ -146,5 +145,28 @@ public class UserController {
                 .collect(Collectors.toList());
 
         return ResponseEntity.ok(ranking);
+    }
+
+    @GetMapping("/reporte/participantes-genero")
+    @PreAuthorize("hasAnyAuthority('ADMIN','SOPORTE')")
+    public ResponseEntity<List<GeneroParticipacionDTO>> obtenerDistribucionParticipantesPorGenero() {
+        List<Object[]> resultados = uS.obtenerDistribucionParticipantesPorGenero();
+
+
+        List<GeneroParticipacionDTO> distribucion = resultados.stream()
+                .map(row -> {
+                    GeneroParticipacionDTO dto = new GeneroParticipacionDTO();
+
+                    dto.setGenero((String) row[0]);
+
+                    dto.setCantidadParticipantes(((Number) row[1]).longValue());
+
+                    dto.setEdadPromedio(((Number) row[2]).doubleValue());
+
+                    return dto;
+                })
+                .collect(Collectors.toList());
+
+        return ResponseEntity.ok(distribucion);
     }
 }

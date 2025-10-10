@@ -31,7 +31,6 @@ public class Actividad {
         this.estado = estado;
     }
 
-    // Getters y Setters
     public int getIdActividad() {
         return idActividad;
     }

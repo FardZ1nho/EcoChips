@@ -18,7 +18,6 @@ public class SoporteRespuesta {
     @Column(name = "fecha", nullable = false)
     private LocalDate fecha;
 
-    // Relación con SoporteSolicitud (FK)
     @ManyToOne
     @JoinColumn(name = "idSolicitud", nullable = false)
     private SoporteSolicitud solicitud;

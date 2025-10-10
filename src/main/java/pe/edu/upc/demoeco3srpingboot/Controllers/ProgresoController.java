@@ -44,13 +44,11 @@ public class ProgresoController {
     @PostMapping
     @PreAuthorize("hasAuthority('CLIENT')")
     public ResponseEntity<String> insertar(@RequestBody ProgresoDTO dto) {
-        // Crear Progreso
         Progreso progreso = new Progreso();
         progreso.setFecha(dto.getFecha());
         progreso.setPuntos(dto.getPuntos());
         progreso.setEstado(dto.isEstado());
 
-        // Buscar Usuario y Actividad por ID
         Usuario usuario = usuarioRepo.findById(dto.getIdUsuario()).orElse(null);
         Actividad actividad = actividadRepo.findById(dto.getIdActividad()).orElse(null);
 
@@ -88,7 +86,6 @@ public class ProgresoController {
                     .body("No se puede modificar. No existe un registro con el ID: " + dto.getIdProgreso());
         }
 
-        // Actualizar campos
         progreso.setFecha(dto.getFecha());
         progreso.setPuntos(dto.getPuntos());
         progreso.setEstado(dto.isEstado());

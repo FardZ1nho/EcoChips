@@ -91,7 +91,6 @@ public class RolController {
                     .body("No se puede modificar. No existe un registro con el ID" + r.getIdRol());
         }
 
-        //Actualizar si pasa validaciones
         rS.update(r);
         return  ResponseEntity.ok("Registro con Id" +r.getIdRol()+"modificado correctamente");
     }

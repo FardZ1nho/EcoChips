@@ -26,7 +26,6 @@ public class Evento {
     private String ubicacion;
 
 
-    // Constructor
     public Evento() {
     }
 
